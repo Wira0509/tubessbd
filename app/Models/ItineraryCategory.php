@@ -10,4 +10,12 @@ class ItineraryCategory extends Model
         'title',
         'slug'
     ];
+
+    public function parent(){
+        return $this->belongsTo(ItineraryCategory::class, 'parent_id');
+    }
+    public function children(){
+        return $this->hasMany(ItineraryCategory::class, 'parent_id')->with('children');
+    }
+
 }

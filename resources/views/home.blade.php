@@ -43,39 +43,40 @@
           <li class="px-3"><a href="about.html">About</a></li>
           <li class="dropdown px-3"><a href="#"><span>Destinations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li class="dropdown"><a href="#"><span>Africa</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li class="dropdown"><a href="#"><span>Deep Dropdown 1</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                      <li><a href="#">Deep Deep Dropdown 1</a></li>
-                      <li><a href="#">Deep Deep Dropdown 2</a></li>
-                      <li><a href="#">Deep Deep Dropdown 3</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="gallery.html">People</a></li>
-              <li><a href="gallery.html">Architecture</a></li>
-              <li><a href="gallery.html">Animals</a></li>
-              <li><a href="gallery.html">Sports</a></li>
-              <li><a href="gallery.html">Travel</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
+            @foreach ($categories as $parent)
+                @if ($parent->children->isNotEmpty())
+                    <li class="dropdown"><a href="#"><span>{{ $parent->title }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            @foreach ($parent->children as $child)
+                                @if ($child->children->isNotEmpty())
+                                    <li class="dropdown"><a href="#"><span>{{ $child->title }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                        <ul>
+                                            @foreach ($child->children as $grandchild)
+                                                <li class="dropdown"><a href="#"><span>{{ $grandchild->title }}</span></a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li class="dropdown">
+                                        <a href="#">{{ $child->title }}</a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </li>
+                @else
+                    <li>
+                        <a class="dropdown-item" href="{{ route('itinerary.category', $parent->slug) }}">
+                            {{ $parent->title }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
             </ul>
           </li>
-          <li class="px-3"><a href="services.html">Services</a></li>
-          <li class="px-3"><a href="contact.html">Contact</a></li>
+          <li class="px-3"><a href="#">Services</a></li>
+          <li class="px-3"><a href="#">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -107,225 +108,25 @@
         <div class="row gy-4 justify-content-center"> 
             
             <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
+            @foreach ( $featureds as $featured)
+                <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
+                    <div>
+                        <div class="gallery-item">
+                        <img src="{{ asset('storage/' . $featured->thumbnail) }}" class="img-fluid" alt="">
+                        <div class="gallery-links d-flex align-items-center justify-content-center">
+                            <a href="#" class="glightbox preview-link font-body">Find out more!</a>
+                        </div>
+                        </div>
                     </div>
+                    <div class="card-body pt-3">
+                        <h4 class="card-title">{{ $featured->ItineraryCategory->title }}</h4>
+                        <p class="card-text pt-2">{{ $featured->title }}</p>
+                        <p style="font-size: 13px"><a href="#">Travel Itineraries</a></p>
+                        <a href="#" class="btn btn-light">Find out more!</a>
                     </div>
                 </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
+            @endforeach
             <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-
-            <!-- CARD START -->
-            <div class="col-xxl-3 col-lg-4 col-md-6 p-5">
-                <div>
-                    <div class="gallery-item">
-                    <img src="assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a href="#" title="Gallery 1" class="glightbox preview-link font-body">Find out more!</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card-body pt-3">
-                    <h4 class="card-title">The Globus British Escape Tour of Great Britain (Full Overview)</h4>
-                    <p class="card-text pt-2">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <p style="font-size: 14px">Posted in <a href="#">England</a>, <a href="#">Europe Travel</a>, <a href="#">Scotland</a></p>
-                    <p style="font-size: 13px"><a href="#">Travel Itineraries</a>, <a href="#">Travel Inspiration</a></p>
-                    <a href="#" class="btn btn-light">Find out more!</a>
-                </div>
-            </div>
-            <!-- CARD END -->
-          
         </div>
 
       </div>

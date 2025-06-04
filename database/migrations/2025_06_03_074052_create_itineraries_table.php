@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('itineraries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('author_id'); 
-            $table->foreignId('news_category_id');
+            $table->foreignId('itinerary_category_id');
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('thumbnail');

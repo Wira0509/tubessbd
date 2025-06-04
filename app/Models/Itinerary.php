@@ -9,11 +9,12 @@ class Itinerary extends Model
 {
     protected $fillable = [
         'author_id',
-        'news_categpry_id',
+        'itinerary_categpry_id',
         'title',
         'slug',
         'thumbnail',
-        'content'
+        'content',
+        'is_featured'
     ];
 
     public function author() {
@@ -21,10 +22,6 @@ class Itinerary extends Model
     }
 
     public function ItineraryCategory() {
-        return $this->belongsTo(ItineraryCategory::class);
-    }
-
-    public function banner(){
-        return $this->hasOne(Banner::class);
+        return $this->belongsToMany(ItineraryCategory::class);
     }
 }
