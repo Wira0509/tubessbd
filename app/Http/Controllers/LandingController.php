@@ -13,10 +13,12 @@ class LandingController extends Controller
             ->whereNull('parent_id')
             ->orderBy('title')
             ->get();
-        $featureds = Itinerary::where('is_featured', true)->get();
-        return view('home', compact('categories'));
+        $featureds = Itinerary::with('categories')
+            ->where('is_featured', true)
+            ->get();
+        return view('home', compact('categories', 'featureds'));
     }
-
+    
 
     public function showByCategory($slug)
     {

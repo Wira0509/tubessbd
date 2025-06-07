@@ -850,6 +850,13 @@ section,
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  object-fit: fill;
+  width: 23rem;
+  height: 15rem;
+}
+
+.gallery-custom {
+  
 }
 
 .gallery .gallery-item img {

@@ -15,7 +15,11 @@ class ItineraryCategory extends Model
         return $this->belongsTo(ItineraryCategory::class, 'parent_id');
     }
     public function children(){
-        return $this->hasMany(ItineraryCategory::class, 'parent_id')->with('children');
+        return $this->hasMany(ItineraryCategory::class, 'parent_id')->with('children'); 
+    }
+    public function itineraries()
+    {
+        return $this->belongsToMany(Itinerary::class, 'itinerary_itinerary_category');
     }
 
 }

@@ -50,7 +50,7 @@ class ItineraryResource extends Resource
                 Forms\Components\RichEditor::make('content')
                     ->columnSpanFull()  
                     ->required(),
-                Forms\Components\ToggleButtons::make('is_featured')
+                Forms\Components\Toggle::make('is_featured')
             ]);
     }
 

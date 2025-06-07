@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('thumbnail');
             $table->longText('content');
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }
