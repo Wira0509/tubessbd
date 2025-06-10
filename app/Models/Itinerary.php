@@ -15,15 +15,21 @@ class Itinerary extends Model
         'thumbnail',
         'content',
         'is_featured'
-    ];
+        ];
 
     public function author() {
         return $this->belongsTo(Author::class);
     }
 
+    public function getFirstCategorySlug()
+    {
+        return $this->categories->first()?->slug ?? 'unknown';
+    }
+
     public function ItineraryCategory() {
         return $this->belongsToMany(ItineraryCategory::class);
     }
+
     public function categories(){
         return $this->belongsToMany(ItineraryCategory::class, 'itinerary_itinerary_category');
     }

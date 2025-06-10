@@ -22,4 +22,18 @@ class ItineraryCategory extends Model
         return $this->belongsToMany(Itinerary::class, 'itinerary_itinerary_category');
     }
 
+    public function getFullSlugPathAttribute()
+{
+    $slugs = [];
+    $category = $this;
+
+    // Loop ke atas sampai tidak ada parent
+    while ($category) {
+        array_unshift($slugs, $category->slug);
+        $category = $category->parent;
+    }
+
+    return implode('/', $slugs);
+}
+
 }

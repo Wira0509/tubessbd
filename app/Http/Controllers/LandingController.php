@@ -12,20 +12,29 @@ class LandingController extends Controller
         $categories = ItineraryCategory::with('children')
             ->whereNull('parent_id')
             ->orderBy('title')
-            ->get();
+            ->get(); 
         $featureds = Itinerary::with('categories')
             ->where('is_featured', true)
             ->get();
-        return view('home', compact('categories', 'featureds'));
-    }
-    
+        return view('pages.landing', compact('categories', 'featureds'));
+    }  
 
-    public function showByCategory($slug)
+    public function showByNestedCategory($slug1, $slug2 = null, $slug3 = null)
     {
-        $category = ItineraryCategory::where('slug', $slug)->firstOrFail();
+        $slugs = array_filter([$slug1, $slug2, $slug3]);
 
-        $itineraries = $category->itineraries()->latest()->get();
+        $category = ItineraryCategory::where('slug', end($slugs))->firstOrFail();
 
-        return view('itineraries.index', compact('itineraries', 'category'));
+        $itineraries = $category->itineraries()->with('categories')
+            ->latest()
+            ->paginate(12);
+
+        return view('itinerary.index', compact('itineraries', 'category', 'slugs'));
     }
+
+    // public function showDetail($slug1, $slug2 = null, $slug3 = null, $itinerarySlug)
+    // {
+    //     $itinerary = Itinerary::with(['categories', 'author'])->where('slug', $itinerarySlug)->firstOrFail();
+    //     return view('itinerary.show', compact('itinerary'));
+    // }
 }
