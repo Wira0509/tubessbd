@@ -301,8 +301,8 @@ h6 {
   }
 
   .navmenu .dropdown ul a {
-    padding: 10px 20px;
-    font-size: 15px;
+    padding: 8px 16px;
+    font-size: 12px;
     text-transform: none;
     color: var(--nav-dropdown-color);
   }
@@ -850,6 +850,13 @@ section,
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  object-fit: fill;
+  width: 23rem;
+  height: 15rem;
+}
+
+.gallery-custom {
+  
 }
 
 .gallery .gallery-item img {
