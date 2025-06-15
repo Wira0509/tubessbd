@@ -5,10 +5,9 @@
         <h1 class="sitename">Divergent Traveller</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
+      <nav id="navmenu" class="navmenu mx-4">
         <ul>
           <li class="px-3"><a href="{{ route('landing') }}" class="active">Travel Itineraries<br></a></li>
-          <li class="px-3"><a href="about.html">About</a></li>
           <li class="dropdown px-3"><a href=""><span>Destinations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul class="dropdown-list multi-column grid">
                 @if(isset($categories) && $categories->isNotEmpty())
@@ -48,8 +47,20 @@
                 @endif
             </ul>
           </li>
-          <li class="px-3"><a href="#">Services</a></li>
-          <li class="px-3"><a href="#">Contact</a></li>
+          <li class="px-3"><a href="about.html">About</a></li>
+            @auth
+            @if (Auth::user()->role === 'admin')
+            <li class="px-3"><a href="/admin">Admin Dashboard</a></li>
+            @endif
+            @endauth
+            <form method="POST" action="{{ route('logout') }}">
+                <li class="px-3"> 
+                        @csrf
+                        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                        </a>
+                </li>
+            </form>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

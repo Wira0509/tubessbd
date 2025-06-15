@@ -87,8 +87,18 @@ h6 {
   font-family: var(--heading-font);
 }
 
-.font-body {
-  font-family: var(--heading-font);
+.font-comment {
+  font-size: 14px;
+}
+
+.font-date {
+  font-size: 10px;
+  color: #6c757d;
+}
+.font-default {
+  font-family: var(--default-font);
+  color: rgb(230, 230, 230);
+  font-size: 13px;
 }
 
 /* PHP Email Form Messages

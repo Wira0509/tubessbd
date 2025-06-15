@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('itineraries', function (Blueprint $table) {
-            $table->boolean('is_featured')->default(false)->after('content');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('user'); // atau enum jika mau
         });
+        
     }
 
     /**
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

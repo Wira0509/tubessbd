@@ -22,7 +22,7 @@ class ItineraryCategoryChildSeeder extends Seeder
                 'Germany', 'France', 'Spain', 'Italy', 'Portugal', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Netherlands', 'Belgium', 'Luxembourg', 'Switzerland', 'Austria', 'England', 'Ireland', 'Hungary', 'Czech Republic', 'Poland', 'Croatia', 'Greece', 'Scotland', 'Montenegro', 'Turkey', 'Russia'
             ],
             104 => [ // North America Travel
-                'United States', 'Canada', 'Mexico', 'Belize', 'Costa Rica', 'Panama', 'Cuba', 'Dominica', 'Puerto Rico', 'Jamaica', 'Barbados', 'St Kitts', 'St Lucia', 'Grand Cayman', 'Cozumel', 'Antigua', 'US Virgin Islands'
+                'Canada', 'Mexico', 'Belize', 'Costa Rica', 'Panama', 'Cuba', 'Dominica', 'Puerto Rico', 'Jamaica', 'Barbados', 'St Kitts', 'St Lucia', 'Grand Cayman', 'Cozumel', 'Antigua', 'US Virgin Islands'
             ],
             105 => [ // South America Travel
                 'Brazil', 'Argentina', 'Peru', 'Chile', 'Colombia', 'Ecuador'
