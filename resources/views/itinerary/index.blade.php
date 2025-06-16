@@ -32,7 +32,7 @@
                     <p class="card-text">
                         <small>
                         @foreach ($itinerary->categories as $category)
-                            <a href="{{ url('/destination/' . $category->full_slug_path) }}"> {{ $category->title }} <span>|</span> </a>
+                            <a href="{{ route('itinerary.category.nested', ['slug1' => $category->slug]) }}"> {{ $category->title }} <span>|</span> </a>
                         @endforeach
                         </small>
                     </p>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->foreignId('parent_id')->nullable()->constrained('itinerary_categories')->nullOnDelete();
             $table->timestamps();
         });
     }

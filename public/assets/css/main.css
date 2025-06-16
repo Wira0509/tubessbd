@@ -87,8 +87,18 @@ h6 {
   font-family: var(--heading-font);
 }
 
-.font-body {
-  font-family: var(--heading-font);
+.font-comment {
+  font-size: 14px;
+}
+
+.font-date {
+  font-size: 10px;
+  color: #6c757d;
+}
+.font-default {
+  font-family: var(--default-font);
+  color: rgb(230, 230, 230);
+  font-size: 13px;
 }
 
 /* PHP Email Form Messages
@@ -257,6 +267,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 6px;
     white-space: nowrap;
     transition: 0.3s;
     text-transform: uppercase;
@@ -266,7 +277,6 @@ h6 {
   .navmenu a i,
   .navmenu a:focus i {
     font-size: 12px;
-    line-height: 0;
     margin-left: 5px;
     transition: 0.3s;
   }
@@ -285,7 +295,11 @@ h6 {
     margin: 0;
     padding: 10px 0;
     background: var(--nav-dropdown-background-color);
-    display: block;
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: 4px 16px;
+    width: max-content;
+    min-width: 400px;
     position: absolute;
     visibility: hidden;
     left: 14px;
@@ -335,7 +349,6 @@ h6 {
     left: -100%;
     visibility: visible;
   }
-}
 
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {

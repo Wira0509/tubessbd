@@ -23,11 +23,20 @@ class LandingController extends Controller
     {
         $slugs = array_filter([$slug1, $slug2, $slug3]);
 
+        // Ambil kategori berdasarkan slug terakhir di URL
         $category = ItineraryCategory::where('slug', end($slugs))->firstOrFail();
 
-        $itineraries = $category->itineraries()->with('categories')
-            ->latest()
-            ->paginate(12);
+        // Ambil semua ID child dari kategori ini (termasuk dirinya sendiri)
+        $categoryIds = collect([$category->id])
+            ->merge($category->children()->pluck('id'))
+            ->toArray();
+
+        // Ambil semua itinerary yang punya kategori salah satu dari IDs di atas
+        $itineraries = Itinerary::whereHas('categories', function ($query) use ($categoryIds) {
+            $query->whereIn('itinerary_categories.id', $categoryIds);
+        })->with('categories')
+        ->latest()
+        ->paginate(12);
 
         return view('itinerary.index', compact('itineraries', 'category', 'slugs'));
     }

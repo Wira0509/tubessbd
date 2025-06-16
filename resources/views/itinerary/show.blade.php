@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@push('css')
+  @livewireStyles
+@endpush
+
+@push('js')
+  @livewireScripts
+  <script>
+      Livewire.on('comment_store', commentId => {
+        var helloScroll = document.getElementById('comment-'+ commentId);
+        helloScroll.scrollIntoView({behavior: 'smooth'}, true);
+      })
+  </script>
+@endpush
+
 @section('title', $itinerary->title)
 
 @section('content')
@@ -66,11 +80,14 @@
           <ul>
             <li><strong>Category</strong>
             @foreach ($itinerary->categories as $category)
-                <a href="{{ url('/destination/' . $category->full_slug_path) }}"> {{ $category->title }} </a>
+                <a href="{{ route('itinerary.category.nested', ['slug1' => $category->slug]) }}"> {{ $category->title }} </a>
             @endforeach
             </li>
-            <li><strong>Project date</strong> {{ $itinerary->created_at->translatedFormat('d F Y') }} </li>
+            <li><strong>Created at</strong> {{ $itinerary->created_at->translatedFormat('d F Y') }} </li>
           </ul>
+          <div>
+            @livewire('articles.comment',['id' => $itinerary->id])
+          </div>
         </div>
       </div>
 

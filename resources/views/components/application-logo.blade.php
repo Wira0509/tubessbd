@@ -1,0 +1,1 @@
+<img src="{{ asset('logo/DIVERGENT TRAVELLER.png') }}" alt="logo" width="250px">

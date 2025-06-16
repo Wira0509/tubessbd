@@ -26,9 +26,19 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
+  <!-- Bootstrap Logo -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  @stack('css')
 </head>
 
 <body class="index-page">
+    @if(session('success'))
+        <div class="p-3 bg-success text-white">
+            <div class="container">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id ex felis.</div>
+        </div>
+    @endif
     @include('includes.navbar')
     
     @yield('content')
@@ -59,6 +69,7 @@
 
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    @stack('js')
 </body>
 
 </html>
