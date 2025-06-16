@@ -30,8 +30,13 @@
                     <button class="btn btn-sm btn-warning" wire:click="selectEdit({{ $item->id }})">Edit</button>
                     <button class="btn btn-sm btn-danger" wire:click="delete({{ $item->id }})">Hapus</button>
                     @endif
+
+                    @if (isset($item -> hasLike))
+                      <button wire:click="like({{ $item->id }})" class="btn btn-sm btn-danger"><i class="bi bi-heart-fill me-2"></i>{{ $item->totalLikes() }}</button>
+                    @else
+                      <button wire:click="like({{ $item->id }})" class="btn btn-sm btn-dark"><i class="bi bi-heart-fill me-2"></i>{{ $item->totalLikes() }}</button> 
+                    @endif
                     
-                    <button class="btn btn-sm btn-danger"><i class="bi bi-heart-fill me-2"></i>(2)</button>
                   </div>
 
                   @if (isset($comment_id) && $comment_id == $item->id)
@@ -82,7 +87,12 @@
                           <button class="btn btn-sm btn-danger" wire:click="delete({{ $item2->id }})">Hapus</button>
                           @endif
                           
-                          <button class="btn btn-sm btn-danger"><i class="bi bi-heart-fill me-2"></i>(2)</button>
+                          @if (isset($item2 -> hasLike))
+                            <button wire:click="like({{ $item2->id }})" class="btn btn-sm btn-danger"><i class="bi bi-heart-fill me-2"></i>{{ $item2->totalLikes() }}</button>
+                          @else
+                            <button wire:click="like({{ $item2->id }})" class="btn btn-sm btn-dark"><i class="bi bi-heart-fill me-2"></i>{{ $item2->totalLikes() }}</button> 
+                          @endif
+
                         </div>
 
                         @if (isset($comment_id) && $comment_id == $item2->id)

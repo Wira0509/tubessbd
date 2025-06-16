@@ -2,12 +2,14 @@
 
     namespace App\Livewire\Articles;
 
+    use App\Filament\Resources\AuthorResource;
     use App\Models\Itinerary;
     use Auth;
     use Illuminate\Support\Facades\Artisan;
     use Livewire\Component;
     use App\Models\Comment as ModelsComment;
     use Livewire\WithEvents;
+    use App\Models\Like;
 
     class Comment extends Component
     {   
@@ -110,4 +112,21 @@
             $this->body2 = NULL;
         }
 
+        public function like($id)
+        {
+            $data = [
+                'comment_id' => $id,
+                'user_id' => Auth::user()->id
+            ];
+
+            $like = Like::where($data);
+            if($like->count() > 0){
+                $like->delete();
+            }else
+            {
+                Like::create($data); 
+            }
+
+            return NULL;
+        }
     }
