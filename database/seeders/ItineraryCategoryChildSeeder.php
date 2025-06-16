@@ -12,43 +12,43 @@ class ItineraryCategoryChildSeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            101 => [ // Africa Travel
+           1 => [ // Africa Travel
                 'Ethiopia', 'Kenya', 'Uganda', 'Malawi', 'Namibia', 'Botswana', 'South Africa', 'Rwanda', 'Tanzania', 'Morocco', 'Egypt'
             ],
-            102 => [ // Asia Travel
+           2 => [ // Asia Travel
                 'Vietnam', 'Thailand', 'Malaysia', 'Indonesia', 'Cambodia', 'Laos', 'Myanmar', 'Singapore', 'Philippines', 'India', 'Sri Lanka', 'Tibet', 'Kazakhstan', 'Kyrgyzstan', 'Uzbekistan'
             ],
-            103 => [ // Europe Travel
+           3 => [ // Europe Travel
                 'Germany', 'France', 'Spain', 'Italy', 'Portugal', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Netherlands', 'Belgium', 'Luxembourg', 'Switzerland', 'Austria', 'England', 'Ireland', 'Hungary', 'Czech Republic', 'Poland', 'Croatia', 'Greece', 'Scotland', 'Montenegro', 'Turkey', 'Russia'
             ],
-            104 => [ // North America Travel
+           4 => [ // North America Travel
                 'Canada', 'Mexico', 'Belize', 'Costa Rica', 'Panama', 'Cuba', 'Dominica', 'Puerto Rico', 'Jamaica', 'Barbados', 'St Kitts', 'St Lucia', 'Grand Cayman', 'Cozumel', 'Antigua', 'US Virgin Islands'
             ],
-            105 => [ // South America Travel
+           5 => [ // South America Travel
                 'Brazil', 'Argentina', 'Peru', 'Chile', 'Colombia', 'Ecuador'
             ],
-            106 => [ // Central America Travel
+           6 => [ // Central America Travel
                 'Costa Rica', 'Panama', 'Belize', 'Guatemala'
             ],
-            107 => [ // Caribbean Travel
+           7 => [ // Caribbean Travel
                 'Bahamas', 'Barbados', 'Dominica', 'St Lucia', 'St Kitts', 'Jamaica', 'Cuba', 'Puerto Rico', 'US Virgin Islands', 'Grand Cayman'
             ],
-            108 => [ // Middle East Travel
+           8 => [ // Middle East Travel
                 'Jordan', 'Cyprus'
             ],
-            109 => [ // Southeast Asia Travel
+           9 => [ // Southeast Asia Travel
                 'Vietnam', 'Thailand', 'Cambodia', 'Laos', 'Myanmar', 'Malaysia', 'Singapore', 'Philippines', 'Indonesia'
             ],
-            110 => [ // Oceania Travel
+            10 => [ // Oceania Travel
                 'Australia', 'New Zealand', 'Fiji', 'Palau', 'Solomon Islands', 'French Polynesia', 'Subantarctic Islands'  
             ],
-            111 => [ // Antarctica
+            11 => [ // Antarctica
                 'Antarctica'
             ],
-            112 => [ // United States
+            12 => [ // United States
                 'California', 'Florida', 'Hawaii', 'Minnesota', 'Nevada', 'New York', 'North Carolina', 'North Dakota', 'Oklahoma', 'Utah', 'Virginia', 'Wisconsin', 'Wyoming', 'Colorado', 'Arizona', 'Montana', 'Alaska'
             ],
-            113 => [ // Travel Tips
+            13 => [ // Travel Tips
                 'Travel Planning', 'Travel Gear', 'Long Term Travel', 'Travel Photography',
             ]  
         ];

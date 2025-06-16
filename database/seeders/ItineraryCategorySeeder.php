@@ -12,19 +12,19 @@ class ItineraryCategorySeeder extends Seeder
     public function run(): void
     {
         $parentCategories = [
-            101 => 'Africa Travel',
-            102 => 'Asia Travel',
-            103 => 'Europe Travel',
-            104 => 'North America Travel',
-            105 => 'South America Travel',
-            106 => 'Central America Travel',
-            107 => 'Caribbean Travel',
-            108 => 'Middle East Travel',
-            109 => 'Southeast Asia Travel',
-            110 => 'Oceania Travel',
-            111 => 'Antarctica',
-            112 => 'United States',
-            113 => 'Travel Tips',
+            1 => 'Africa Travel',
+            2 => 'Asia Travel',
+            3 => 'Europe Travel',
+            4 => 'North America Travel',
+            5 => 'South America Travel',
+            6 => 'Central America Travel',
+            7 => 'Caribbean Travel',
+            8 => 'Middle East Travel',
+            9 => 'Southeast Asia Travel',
+            10 => 'Oceania Travel',
+            11 => 'Antarctica',
+            12 => 'United States',
+            13 => 'Travel Tips',
         ];
 
         $insertData = [];
