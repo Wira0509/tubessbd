@@ -47,7 +47,7 @@
                 @endif
             </ul>
           </li>
-          <li class="px-3"><a href="about.html">About</a></li>
+          <li class="px-3"><a href="{{ route('landing') }}">About</a></li>
             @auth
             @if (Auth::user()->role === 'admin')
             <li class="px-3"><a href="/admin">Admin Dashboard</a></li>

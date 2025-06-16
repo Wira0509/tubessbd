@@ -80,7 +80,7 @@
           <ul>
             <li><strong>Category</strong>
             @foreach ($itinerary->categories as $category)
-                <a href="{{ url('/destination/' . $category->full_slug_path) }}"> {{ $category->title }} </a>
+                <a href="{{ route('itinerary.category.nested', ['slug1' => $category->slug]) }}"> {{ $category->title }} </a>
             @endforeach
             </li>
             <li><strong>Created at</strong> {{ $itinerary->created_at->translatedFormat('d F Y') }} </li>

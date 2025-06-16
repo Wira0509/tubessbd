@@ -24,11 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [LandingController::class, 'index'])->middleware(['auth', 'verified'])->name('landing');
-
-Route::get('/destination/{itinerarySlug}', [ItineraryController::class, 'showDetail'])
+Route::get('/itinerary/{itinerarySlug}', [ItineraryController::class, 'showDetail'])
     ->middleware('auth')
     ->name('itinerary.show');
+
+Route::get('/', [LandingController::class, 'index'])->middleware(['auth', 'verified'])->name('landing');
 
 Route::get('/destination/{slug1}/{slug2?}/{slug3?}', [LandingController::class, 'showByNestedCategory'])
     ->where([
