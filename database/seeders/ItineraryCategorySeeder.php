@@ -24,6 +24,7 @@ class ItineraryCategorySeeder extends Seeder
             110 => 'Oceania Travel',
             111 => 'Antarctica',
             112 => 'United States',
+            113 => 'Travel Tips',
         ];
 
         $insertData = [];

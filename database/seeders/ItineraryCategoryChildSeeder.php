@@ -47,7 +47,10 @@ class ItineraryCategoryChildSeeder extends Seeder
             ],
             112 => [ // United States
                 'California', 'Florida', 'Hawaii', 'Minnesota', 'Nevada', 'New York', 'North Carolina', 'North Dakota', 'Oklahoma', 'Utah', 'Virginia', 'Wisconsin', 'Wyoming', 'Colorado', 'Arizona', 'Montana', 'Alaska'
-            ]
+            ],
+            113 => [ // Travel Tips
+                'Travel Planning', 'Travel Gear', 'Long Term Travel', 'Travel Photography',
+            ]  
         ];
 
         foreach ($categories as $parentId => $children) {
