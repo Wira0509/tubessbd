@@ -33,4 +33,9 @@ class Itinerary extends Model
     public function categories(){
         return $this->belongsToMany(ItineraryCategory::class, 'itinerary_itinerary_category');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'itineraries_id');
+    }
 }

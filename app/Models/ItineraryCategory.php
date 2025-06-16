@@ -23,17 +23,17 @@ class ItineraryCategory extends Model
     }
 
     public function getFullSlugPathAttribute()
-{
-    $slugs = [];
-    $category = $this;
+    {
+        $slugs = [];
+        $category = $this;
 
-    // Loop ke atas sampai tidak ada parent
-    while ($category) {
-        array_unshift($slugs, $category->slug);
-        $category = $category->parent;
+        // Loop ke atas sampai tidak ada parent
+        while ($category) {
+            array_unshift($slugs, $category->slug);
+            $category = $category->parent;
+        }
+
+        return implode('/', $slugs);
     }
-
-    return implode('/', $slugs);
-}
 
 }
